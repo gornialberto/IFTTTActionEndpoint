@@ -24,9 +24,15 @@ namespace MyHomeAPI.Controllers
             return IFTTTActionService.GetAllNotProcessed();
         }
 
+        [HttpGet("{actionName}")]
+        public IEnumerable<IFTTTActionData> GetAllNotProcessedForAction(string actionName)
+        {
+            return IFTTTActionService.GetAllNotProcGetAllNotProcessedForActionessed(actionName);
+        }
+
 
         [HttpPost("{actionName}")]
-        public IActionResult Create(string actionName, [FromBody]object content)
+        public IActionResult Create(string actionName, [FromBody]Newtonsoft.Json.Linq.JObject content)
         {
             //+content {
             //    {
@@ -37,6 +43,9 @@ namespace MyHomeAPI.Controllers
             //}
             //object { Newtonsoft.Json.Linq.JObject}
 
+            //dynamic results = JsonConvert.DeserializeObject<dynamic>(json);
+            //var id = results.Id;
+            //var name = results.Name;
 
             if (string.IsNullOrEmpty(actionName))
             {
@@ -46,7 +55,7 @@ namespace MyHomeAPI.Controllers
             IFTTTActionData item = new IFTTTActionData();
 
             item.ActionName = actionName;
-            item.ActionBodyContent = content.ToString();
+            item.ActionBodyContent = content.ToString(Newtonsoft.Json.Formatting.None);
 
             IFTTTActionService.Add(item);
 

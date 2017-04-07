@@ -10,5 +10,7 @@ namespace MyHomeAPI.Models
         IFTTTActionData Add(IFTTTActionData item);
 
         IEnumerable<IFTTTActionData> GetAllNotProcessed();
+
+        IEnumerable<IFTTTActionData> GetAllNotProcGetAllNotProcessedForActionessed(string actionName);
     }
 }

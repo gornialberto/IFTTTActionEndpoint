@@ -31,13 +31,23 @@ namespace MyHomeAPI.Models
 
 
         /// <summary>
-        /// Get all the Set Point Data
+        /// Get all not processed action
         /// </summary>
         /// <returns></returns>
         public IEnumerable<IFTTTActionData> GetAllNotProcessed()
         {
             //easy one just return all the items in the DB
             return _context.IFTTTActionsData.Where(item => item.Processed == false);
+        }
+
+        /// <summary>
+        /// Get all not processed action by action name
+        /// </summary>
+        /// <param name="actionName"></param>
+        /// <returns></returns>
+        public IEnumerable<IFTTTActionData> GetAllNotProcGetAllNotProcessedForActionessed(string actionName)
+        {
+            return _context.IFTTTActionsData.Where(item => item.ActionName == actionName && item.Processed == false);
         }
     }
 }
