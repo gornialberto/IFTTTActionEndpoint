@@ -7,6 +7,8 @@ namespace MyHomeAPI.Models
 {
     public interface IIFTTTActionService
     {
-        void Add(IFTTTActionData item);
+        IFTTTActionData Add(IFTTTActionData item);
+
+        IEnumerable<IFTTTActionData> GetAllNotProcessed();
     }
 }

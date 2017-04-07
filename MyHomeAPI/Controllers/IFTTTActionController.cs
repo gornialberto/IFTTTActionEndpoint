@@ -19,23 +19,38 @@ namespace MyHomeAPI.Controllers
 
 
         [HttpGet]
-        public IEnumerable<IFTTTActionData> GetAll()
+        public IEnumerable<IFTTTActionData> GetAllNotProcessed()
         {
-            return null; //IFTTTActionService.GetAll();
+            return IFTTTActionService.GetAllNotProcessed();
         }
 
 
-        [HttpPost]
-        public IActionResult Create([FromBody] IFTTTActionData item)
+        [HttpPost("{actionName}")]
+        public IActionResult Create(string actionName, [FromBody]object content)
         {
-            if (item == null)
+            //+content {
+            //    {
+            //        "ActionBodyContent": {
+            //            "innerContent": "value"
+            //        }
+            //    }
+            //}
+            //object { Newtonsoft.Json.Linq.JObject}
+
+
+            if (string.IsNullOrEmpty(actionName))
             {
                 return BadRequest();
             }
 
+            IFTTTActionData item = new IFTTTActionData();
+
+            item.ActionName = actionName;
+            item.ActionBodyContent = content.ToString();
+
             IFTTTActionService.Add(item);
 
-            return Create(item);
+            return Created(item.ActionName, item);
         }
     }
 }

@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace MyHomeAPI.Data
 {
-    public class SetPointDataContext : DbContext
+    public class HomeAPIDataContext : DbContext
     {
-        public SetPointDataContext(DbContextOptions<SetPointDataContext> options) : base(options)
+        public HomeAPIDataContext(DbContextOptions<HomeAPIDataContext> options) : base(options)
         {
         }
 
         public DbSet<SetPointData> SetPoints { get; set; }
+
+        public DbSet<IFTTTActionData> IFTTTActionsData { get; set; }
     }
 }

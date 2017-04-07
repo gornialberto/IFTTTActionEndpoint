@@ -14,6 +14,6 @@ namespace MyHomeAPI.Models
         public string Value { get; set; }
 
         [DataType(DataType.Date)]
-        public long LastUpdate { get; set; }
+        public DateTime LastUpdate { get; set; }
     }
 }

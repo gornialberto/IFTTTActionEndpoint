@@ -33,15 +33,20 @@ namespace MyHomeAPI.Controllers
                 return BadRequest();
             }
 
-            SetPointService.Add(item);
+            SetPointService.AddOrUpdate(item);
 
             return Created(item.SetPointName,item);
         }
 
         [HttpGet("{setPointName}")]
-        public SetPointData Get(string setPointName)
+        public IActionResult Get(string setPointName)
         {
-            return new SetPointData() { SetPointName = setPointName };
+            SetPointData aSetPoint = SetPointService.GetSetPoint(setPointName);
+
+            if (aSetPoint != null)
+                return this.Ok(aSetPoint);
+            else
+                return NotFound();
         }
     }
 }

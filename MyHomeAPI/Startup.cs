@@ -30,7 +30,7 @@ namespace MyHomeAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Data.SetPointDataContext>(options =>
+            services.AddDbContext<Data.HomeAPIDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add framework services.
@@ -43,7 +43,7 @@ namespace MyHomeAPI
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
-            Data.SetPointDataContext setPointDataContext)
+            Data.HomeAPIDataContext setPointDataContext)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
