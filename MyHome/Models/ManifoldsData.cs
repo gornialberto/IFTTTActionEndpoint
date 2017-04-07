@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,18 +9,16 @@ namespace MyHomeAPI.Models
 {
     public class ManifoldsData
     {
-        public long? TimeStamp { get; set; }
+        //DateTimeOffset.FromUnixTimeMilliseconds
+        [Key]
+        [DataType(DataType.Date)]
+        public DateTime TimeStamp { get; set; }
 
         public string ReadeableTimeStamp
         {
             get
             {
-                if (this.TimeStamp.HasValue)
-                {
-                    return DateTimeOffset.FromUnixTimeMilliseconds(this.TimeStamp.Value).ToString(DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern);
-                }
-
-                return string.Empty;
+                    return this.TimeStamp.ToString(DateTimeFormatInfo.InvariantInfo.UniversalSortableDateTimePattern);
             }
         }
 

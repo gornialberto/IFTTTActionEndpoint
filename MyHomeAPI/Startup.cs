@@ -36,7 +36,7 @@ namespace MyHomeAPI
             // Add framework services.
             services.AddMvc();
 
-            services.AddSingleton<IManifoldsDataRepository, ManifoldsDataRepository>();
+            services.AddSingleton<IManifoldsDataService, ManifoldsDataService>();
             services.AddSingleton<IIFTTTActionService, IFTTTActionService>();
             services.AddSingleton<ISetPointnService, SetPointService>();
         }

@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace MyHomeAPI.Models
 {
-    public interface IManifoldsDataRepository
+    public interface IManifoldsDataService
     {
-        void Add(ManifoldsData item);
+        ManifoldsData Add(ManifoldsData item);
         IEnumerable<ManifoldsData> GetAll();
         ManifoldsData GetLast();
-        ManifoldsData Find(long timeStamp);
-        ManifoldsData Remove(long timeStamp);
-        void Update(ManifoldsData item);
     }
 }

@@ -61,5 +61,11 @@ namespace MyHomeAPI.Controllers
 
             return Created(item.ActionName, item);
         }
+
+        //// DELETE api/values/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

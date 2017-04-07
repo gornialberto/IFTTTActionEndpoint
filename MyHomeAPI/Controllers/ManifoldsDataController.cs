@@ -10,30 +10,24 @@ namespace MyHomeAPI.Controllers
     [Route("api/[controller]")]
     public class ManifoldsDataController : Controller
     {
-        public IManifoldsDataRepository Repository { get; set; }
+        public IManifoldsDataService Repository { get; set; }
 
-        public ManifoldsDataController(IManifoldsDataRepository repository)
+        public ManifoldsDataController(IManifoldsDataService repository)
         {
             Repository = repository;
         }
 
 
-        [HttpGet]
+        [HttpGet("all")]
         public IEnumerable<ManifoldsData> GetAll()
         {
             return Repository.GetAll();
         }
 
-
-        [HttpGet("{timeStamp}", Name = "GetManifoldData")]
-        public IActionResult GetById(long timeStamp)
+        [HttpGet("last")]
+        public ManifoldsData GetLast()
         {
-            var item = Repository.Find(timeStamp);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return new ObjectResult(item);
+            return Repository.GetLast();
         }
 
         [HttpPost]
@@ -43,8 +37,10 @@ namespace MyHomeAPI.Controllers
             {
                 return BadRequest();
             }
+
             Repository.Add(item);
-            return CreatedAtRoute("GetManifoldData", new { timeStamp = item.TimeStamp }, item);
+
+            return Ok(item);
         }
     }
 }

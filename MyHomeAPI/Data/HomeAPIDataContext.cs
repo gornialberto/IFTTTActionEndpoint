@@ -16,5 +16,7 @@ namespace MyHomeAPI.Data
         public DbSet<SetPointData> SetPoints { get; set; }
 
         public DbSet<IFTTTActionData> IFTTTActionsData { get; set; }
+
+        public DbSet<ManifoldsData> ManifoldsData { get; set; }
     }
 }
