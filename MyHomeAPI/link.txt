@@ -1,0 +1,20 @@
+﻿
+Tutorial
+
+https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro
+
+other EF tutorial
+
+https://github.com/aspnet/Docs/blob/master/aspnetcore/data/ef-mvc/intro/samples/cu-final/Data/DbInitializer.cs
+
+Mobile beck end
+
+https://docs.microsoft.com/en-us/aspnet/core/mobile/native-mobile-backend
+
+Dockers
+
+https://stormpath.com/blog/tutorial-deploy-asp-net-core-on-linux-with-docker
+
+My repo
+
+https://github.com/gornialberto/IFTTTActionEndpoint/tree/master/MyHomeAPI
