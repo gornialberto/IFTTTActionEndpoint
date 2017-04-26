@@ -11,6 +11,7 @@ namespace MyHomeAPI.Data
     {
         public HomeAPIDataContext(DbContextOptions<HomeAPIDataContext> options) : base(options)
         {
+
         }
 
         public DbSet<SetPointData> SetPoints { get; set; }
